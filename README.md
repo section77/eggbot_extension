@@ -7,7 +7,7 @@ from inside Inkscape.
 You have to put these two directories inside your ```~/.config/inkscape``` folder.
 
 ```bash
-curl https://github.com/section77/eggbot_extension/archive/v1.0.tar.gz | tar -xz
+curl https://github.com/section77/eggbot_extension/archive/1.0.tar.gz | tar -xz
 cp -r eggbot_extension-1.0/templates ~/.config/inkscape
 cp -r eggbot_extension-1.0/extensions ~/.config/inkscape
 ```
