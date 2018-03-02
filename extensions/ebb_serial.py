@@ -50,10 +50,12 @@ def findPort():
 		comPortsList = list(comports())
 		EBBport = None
 		for port in comPortsList:
-			#inkex.errormsg(port[1])	#TODO REMOVE
 			if port[1].startswith("EiBotBoard"):
 				EBBport = port[0] 	#Success; EBB found by name match.
 				break	#stop searching-- we are done.
+			elif port[1].startswith("USB2.0-Serial"):
+				EBBport = port[0]  # Success; Arduino found by name match.
+				break  # stop searching-- we are done.
 		if EBBport is None:
 			for port in comPortsList:
 				if port[2].startswith("USB VID:PID=04D8:FD92"):
@@ -96,7 +98,7 @@ def testPort( comPort ):
 	'''		
 	if comPort is not None:
 		try:
-			serialPort = serial.Serial( comPort, timeout=1.0 ) # 1 second timeout!
+			serialPort = serial.Serial( comPort, timeout=2.0 ) # 2 second timeout!
 			serialPort.write( 'v\r'.encode('ascii') )
 			strVersion = serialPort.readline()			
 			if strVersion and strVersion.startswith( "EBB".encode('ascii') ):
