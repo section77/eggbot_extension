@@ -56,6 +56,9 @@ def findPort():
 			elif port[1].startswith("USB2.0-Serial"):
 				EBBport = port[0]  # Success; Arduino found by name match.
 				break  # stop searching-- we are done.
+			elif port[1].startswith("USB-SERIAL"):
+				EBBport = port[0]  # Success; Arduino found by name match.
+				break  # stop searching-- we are done.
 		if EBBport is None:
 			for port in comPortsList:
 				if port[2].startswith("USB VID:PID=04D8:FD92"):
